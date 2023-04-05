@@ -1,12 +1,13 @@
 <template>
   <div class="payment-cont">
-    <div class="payment-title">
+    <div class="payment-title" v-if="!trigger">
       <h1>Payment Information</h1>
     </div>
-    <form class="form-container" @submit.prevent="">
+    <form class="form-container" @submit.prevent="onSubmit" v-if="!trigger">
       <div class="field-container">
         <label for="name">Name</label>
         <input
+          class="input"
           required
           id="name"
           maxlength="20"
@@ -15,34 +16,25 @@
         />
       </div>
       <div class="field-container">
-        <label for="cardnumber">Card Number</label
-        ><span id="generatecard">generate random</span>
+        <label for="cardnumber">Card Number (16 digit)</label>
         <input
+          class="input"
           required
           id="cardnumber"
           type="number"
-          pattern="[0-9]*"
+          pattern="[0-9]{16}"
           inputmode="numeric"
           v-model="cardNumber"
         />
-        <svg
-          id="ccicon"
-          class="ccicon"
-          width="750"
-          height="471"
-          viewBox="0 0 750 471"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        ></svg>
       </div>
       <div class="field-container">
         <label for="expirationdate">Expiration (mm/yy)</label>
         <input
+          class="input"
           required
           id="expirationdate"
           type="text"
-          pattern="[0-9]*"
+          pattern="[0-9]{2}/[0-9]{2}"
           inputmode="numeric"
           v-model="expireDate"
         />
@@ -50,6 +42,7 @@
       <div class="field-container">
         <label for="securitycode">Security Code</label>
         <input
+          class="input"
           required
           id="securitycode"
           type="text"
@@ -58,25 +51,43 @@
           v-model="ssc"
         />
       </div>
-      <button-comp class="confirm"> Confirme </button-comp>
+      <button class="confirm" type="submit">Confirme</button>
     </form>
+    <conclusionComp :data="conslusion"></conclusionComp>
   </div>
 </template>
 
 <script>
-import { buttonComp } from "@/components/shared";
+import conclusionComp from "@/components/conclusionComp";
 export default {
   components: {
-    "button-comp": buttonComp,
+    conclusionComp,
   },
   data() {
     return {
-      cardNumber: null,
+      cardNumber: "",
       fullName: "",
       expireDate: "",
-      ssc: 0,
+      ssc: "",
+      conslusion: [],
+      trigger: false,
     };
   },
+  methods: {
+    onSubmit() {
+      if (
+        this.cardNumber !== "" &&
+        this.fullName !== "" &&
+        this.expireDate !== "" &&
+        this.ssc != ""
+      ) {
+        this.conslusion = [...this.$store.state.cart.cart];
+        this.$store.dispatch("cart/clear");
+        this.trigger = true;
+      }
+    },
+  },
+  computed: {},
 };
 </script>
 
@@ -111,7 +122,7 @@ export default {
   grid-area: security;
 }
 
-.field-container input {
+.field-container .input {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -136,7 +147,7 @@ label {
   font-size: 13px;
 }
 
-input {
+.input {
   margin-top: 3px;
   padding: 15px;
   font-size: 16px;

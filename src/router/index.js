@@ -58,7 +58,6 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
-    props: true,
   },
   {
     path: "/checkout",
@@ -67,7 +66,6 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
-    props: true,
   },
 ];
 

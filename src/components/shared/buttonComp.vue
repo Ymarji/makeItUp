@@ -1,5 +1,9 @@
 <template>
-  <button :class="['button', { reverse: reverse }]" @click="callback($event)">
+  <button
+    :class="['button', { reverse: reverse }]"
+    :type="type"
+    @click="callback($event)"
+  >
     <slot></slot>
   </button>
 </template>
@@ -11,6 +15,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    type: {
+      type: String,
+      required: false,
+      default: "button",
     },
   },
   methods: {

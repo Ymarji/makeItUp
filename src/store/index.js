@@ -93,6 +93,10 @@ const cartModule = {
         state.totalItems--;
       }
     },
+
+    CLEAR(state) {
+      state.cart = [];
+    },
   },
   actions: {
     addToCart({ commit }, payload) {
@@ -100,6 +104,9 @@ const cartModule = {
     },
     deleteFromCart({ commit }, payload) {
       commit("DELETE_FROM_CART", payload);
+    },
+    clear({ commit }) {
+      commit("CLEAR");
     },
   },
 };
@@ -131,9 +138,19 @@ const userModule = {
   },
 };
 export default new Vuex.Store({
-  state: {},
+  state: {
+    cach: [],
+  },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    SET(state, payload) {
+      state.cach = [...payload];
+    },
+  },
+  actions: {
+    setCach({ commit }, payload) {
+      commit("SET", payload);
+    },
+  },
   modules: { products: productsModule, cart: cartModule, user: userModule },
 });

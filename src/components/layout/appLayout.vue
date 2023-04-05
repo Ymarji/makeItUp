@@ -15,21 +15,21 @@
             />
             <span class="cart_count">{{ cartLenght }}</span>
           </div>
-          <cartModal v-show="cartToggle" />
+          <!-- <cartModal v-show="cartToggle" /> -->
         </div>
         <a href="#" class="l_button" @click.prevent="sign">
           {{ isLogged ? "Logout" : "Login" }}
         </a>
       </nav>
     </header>
-    <main class="main" @click.prevent="toggleCartOff"><slot></slot></main>
+    <main class="main"><slot></slot></main>
     <footerComp />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import cartModal from "@/components/cartModal";
+// import cartModal from "@/components/cartModal";
 import footerComp from "@/components/footerComp";
 import { getAuth, signOut } from "firebase/auth";
 export default {
@@ -39,7 +39,7 @@ export default {
     };
   },
   components: {
-    cartModal,
+    // cartModal,
     footerComp,
   },
   computed: {
@@ -49,10 +49,9 @@ export default {
   methods: {
     toggleCart() {
       this.cartToggle = !this.cartToggle;
+      if (this.$router.currentRoute.name !== "cart") this.$router.push("/cart");
     },
-    toggleCartOff() {
-      if (this.cartToggle === true) this.cartToggle = false;
-    },
+
     sign() {
       if (this.isLogged === true) {
         signOut(getAuth()).then(() => {
