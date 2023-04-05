@@ -53,7 +53,7 @@
       </div>
       <button class="confirm" type="submit">Confirme</button>
     </form>
-    <conclusionComp :data="conslusion"></conclusionComp>
+    <conclusionComp :data="conslusion" v-if="trigger"></conclusionComp>
   </div>
 </template>
 
