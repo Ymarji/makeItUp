@@ -22,7 +22,8 @@ const productsModule = {
       return state.products;
     },
     getItemById: (state) => (id) => {
-      console.log(state.products.find((item) => item.id === id));
+      state.products.find((item) => item.id === id);
+      console.log("item", id);
       return state.products.find((item) => item.id === id);
     },
   },
@@ -40,7 +41,6 @@ const productsModule = {
       axios.all(requests).then((responses) => {
         const data = [];
         responses.map((res) => data.push(...res.data.products));
-        console.log(data);
         commit("ADD_PRODUCTS", data);
       });
 
@@ -87,7 +87,6 @@ const cartModule = {
       }
     },
     DELETE_FROM_CART(state, { id }) {
-      console.log("id", id);
       if (id) {
         state.cart = state.cart.filter((value) => value.item.id !== id);
         state.totalItems--;

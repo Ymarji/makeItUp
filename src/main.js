@@ -28,7 +28,7 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 router.beforeEach((to, from, next) => {
-  console.log(store.state.user.isLogged);
+  console.log("loggeed", store.state.user.isLogged);
   if (!store.state.user.isLogged && to.meta.requiresAuth) {
     next("/login");
   } else {

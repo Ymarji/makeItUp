@@ -10,6 +10,7 @@
 export default {
   beforeMount() {
     this.$store.dispatch("products/getProduct");
+    console.log("start");
   },
   created() {},
 };

@@ -15,7 +15,7 @@ const routes = [
     name: "home",
     component: HomeViews,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {
@@ -23,7 +23,7 @@ const routes = [
     name: "products",
     component: productsView,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {

@@ -3,11 +3,11 @@
     <header class="header">
       <nav class="nav">
         <div class="logo"><font-awesome-icon :icon="['fas', 'marker']" /></div>
-        <div class="nave_link" v-show="isLogged">
+        <div class="nave_link">
           <router-link to="/" exact>Home </router-link>
           <router-link to="/products">product </router-link>
         </div>
-        <div class="cart" v-show="isLogged">
+        <div class="cart">
           <div @click="toggleCart">
             <font-awesome-icon
               :icon="['fas', 'bag-shopping']"
@@ -49,7 +49,8 @@ export default {
   methods: {
     toggleCart() {
       this.cartToggle = !this.cartToggle;
-      if (this.$router.currentRoute.name !== "cart") this.$router.push("/cart");
+      if (this.$router.currentRoute.name !== "cart")
+        this.$router.push("/cart").catch(() => console.log("redirected"));
     },
 
     sign() {
