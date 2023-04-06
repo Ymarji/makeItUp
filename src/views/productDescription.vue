@@ -85,6 +85,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-right: 1px solid #000;
 }
 .image_container .p_images_box {
   display: flex;
@@ -107,11 +108,9 @@ export default {
 }
 
 .desc_coontainer .p_price {
-  /* align-self: flex-end; */
   margin-right: 2.5rem;
   font-size: 1.2rem;
   font-weight: bold;
-  /* display: flex; */
 }
 .desc_coontainer .p_title {
   margin-right: 2.5rem;
@@ -120,6 +119,6 @@ export default {
 }
 
 .desc_button {
-  align-self: flex-end;
+  align-self: center;
 }
 </style>
