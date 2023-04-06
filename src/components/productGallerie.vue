@@ -2,45 +2,39 @@
   <div>
     <div class="g_filter">
       <div class="g_cat">
-        <label @click.stop="" for="all">
-          ALL :
-          <input
-            type="radio"
-            name="p_category"
-            id="all"
-            value="all"
-            :checked="category === 'all'"
-            @change="setcategory"
-            @click.stop=""
-          />
-        </label>
-        <label @click.stop="" for="cat1">
-          skincare :
-          <input
-            type="radio"
-            name="p_category"
-            value="skincare"
-            id="cat1"
-            :checked="category === 'skincare'"
-            @change="setcategory"
-            @click.stop=""
-          />
-        </label>
-        <label @click.stop="" for="cat2">
-          jewellery :
-          <input
-            type="radio"
-            name="p_category"
-            value="womens-jewellery"
-            :checked="category === 'womens-jewellery'"
-            id="cat2"
-            @change="setcategory"
-            @click.stop=""
-          />
-        </label>
+        <input
+          type="radio"
+          name="p_category"
+          id="all"
+          value="all"
+          :checked="category === 'all'"
+          @change="setcategory"
+          @click.stop=""
+        />
+        <label @click.stop="" for="all" class="radio-label"> ALL </label>
+        <input
+          type="radio"
+          name="p_category"
+          value="womens-jewellery"
+          :checked="category === 'womens-jewellery'"
+          id="cat2"
+          @change="setcategory"
+          @click.stop=""
+        />
+        <label @click.stop="" for="cat2" class="radio-label"> jewellery </label>
+        <input
+          type="radio"
+          name="p_category"
+          value="skincare"
+          id="cat1"
+          :checked="category === 'skincare'"
+          @change="setcategory"
+          @click.stop=""
+        />
+        <label @click.stop="" for="cat1" class="radio-label"> skincare </label>
       </div>
       <div class="g_search">
-        search :
+        <!-- <span class="g_search_text">search </span> -->
         <text-input v-model="query" :placeholder="'search'" :value="query" />
       </div>
       <div>
@@ -117,6 +111,7 @@ export default {
   padding: 0.5rem;
   border: 1px solid #000;
   border-radius: 0.25rem;
+  flex-wrap: wrap;
 }
 .gallerie {
   display: grid;
@@ -132,10 +127,37 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .g_select {
-  padding: 0.5rem;
+  padding: 0.25rem;
   border-radius: 0.5em;
   border: 1px solid gray;
+}
+
+.radio-label {
+  border-radius: 0.5rem;
+  border: 1px solid #000;
+  padding: 0.25rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type="radio"]:checked + .radio-label {
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+}
+
+.g_cat input[type="radio"] {
+  display: none;
+}
+
+.g_search {
+  font-weight: bold;
+}
+
+.g_search input {
+  width: 100%;
 }
 </style>

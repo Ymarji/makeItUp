@@ -87,6 +87,8 @@ export default {
 .nave_link a {
   text-decoration: none;
   color: black;
+  font-size: 1.2rem;
+  -webkit-text-stroke: 0.5px #000;
 }
 
 .nave_link a:hover {

@@ -30,7 +30,9 @@
       </p>
 
       <br />
-      <button-Comp @click.stop="addClick"> add to cart </button-Comp>
+      <button-Comp @click.stop="addClick" class="desc_button">
+        add to cart
+      </button-Comp>
     </div>
   </div>
 </template>
@@ -115,5 +117,9 @@ export default {
   margin-right: 2.5rem;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.desc_button {
+  align-self: flex-end;
 }
 </style>
