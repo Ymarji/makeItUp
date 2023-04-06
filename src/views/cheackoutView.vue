@@ -12,7 +12,7 @@
           id="name"
           maxlength="20"
           type="text"
-          v-model="fullName"
+          v-model.trim="fullName"
         />
       </div>
       <div class="field-container">
@@ -21,10 +21,11 @@
           class="input"
           required
           id="cardnumber"
-          type="number"
-          pattern="[0-9]{16}"
+          type="text"
+          pattern="^[0-9]{16}$"
           inputmode="numeric"
           v-model="cardNumber"
+          maxlength="16"
         />
       </div>
       <div class="field-container">
@@ -34,7 +35,7 @@
           required
           id="expirationdate"
           type="text"
-          pattern="[0-9]{2}/[0-9]{2}"
+          pattern="^(0[1-9]|1[0-2])/?([0-9]{2})$"
           inputmode="numeric"
           v-model="expireDate"
         />
@@ -51,7 +52,9 @@
           v-model="ssc"
         />
       </div>
-      <button class="confirm" type="submit">Confirme</button>
+      <button class="confirm" type="submit" :disabled="cart.length === 0">
+        Confirme
+      </button>
     </form>
     <conclusionComp :data="conslusion" v-if="trigger"></conclusionComp>
   </div>
@@ -59,6 +62,7 @@
 
 <script>
 import conclusionComp from "@/components/conclusionComp";
+import { mapState } from "vuex";
 export default {
   components: {
     conclusionComp,
@@ -87,7 +91,9 @@ export default {
       }
     },
   },
-  computed: {},
+  computed: {
+    ...mapState("cart", ["cart"]),
+  },
 };
 </script>
 
@@ -99,6 +105,14 @@ export default {
 }
 .confirm {
   grid-area: button;
+  padding: 0.5rem 1.5rem;
+  border: 2px black solid;
+  color: black;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .confirm:hover {

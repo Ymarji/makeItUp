@@ -57,7 +57,12 @@ export default {
   /* padding: 1rem; */
   flex: 0 0 30%;
 }
-
+.collection__data h1 {
+  white-space: nowrap;
+}
+.collection__data a {
+  white-space: nowrap;
+}
 .img__container {
   width: 25rem;
   text-align: center;
