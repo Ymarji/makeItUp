@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     shop(item) {
-      this.$router.replace(`/description/${item.id}`);
+      this.$router.push(`/description/${item.id}`);
     },
   },
 };

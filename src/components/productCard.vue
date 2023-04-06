@@ -42,7 +42,7 @@ export default {
       }
     },
     productDetail() {
-      this.$router.replace(`/description/${this.item?.id}`);
+      this.$router.push(`/description/${this.item?.id}`);
     },
   },
 };

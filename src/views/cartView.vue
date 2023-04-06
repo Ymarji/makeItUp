@@ -69,7 +69,7 @@ export default {
       this.deleteFromCart(item);
     },
     checkout() {
-      this.$router.replace("/checkout");
+      this.$router.push("/checkout");
     },
   },
 };

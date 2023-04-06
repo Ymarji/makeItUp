@@ -36,7 +36,7 @@ export default {
             name: this.email,
             password: this.password,
           });
-          this.$router.replace("/");
+          this.$router.push("/");
         })
         .catch((err) => {
           console.log(err);
