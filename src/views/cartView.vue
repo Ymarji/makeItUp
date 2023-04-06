@@ -139,6 +139,7 @@ export default {
   margin: 0.5rem;
   border: 1px solid #000;
   border-radius: 0.25rem;
+  font-weight: bold;
 }
 
 .checkout {

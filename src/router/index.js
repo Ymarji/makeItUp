@@ -6,7 +6,8 @@ import loginView from "@/views/loginView";
 import signView from "@/views/signView";
 import cartView from "@/views/cartView";
 import productDescription from "@/views/productDescription";
-import cheackoutView from "@/views/cheackoutView";
+import checkInfoView from "@/views/checkInfoView";
+import PageNotFound from "@/views/pageNotFound";
 Vue.use(VueRouter);
 
 const routes = [
@@ -62,11 +63,12 @@ const routes = [
   {
     path: "/checkout",
     name: "checkout",
-    component: cheackoutView,
+    component: checkInfoView,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
+  { path: "*", component: PageNotFound },
 ];
 
 const router = new VueRouter({

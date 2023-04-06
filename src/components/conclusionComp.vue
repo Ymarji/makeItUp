@@ -1,7 +1,7 @@
 <template>
   <div class="cart_cont">
     <div class="payment-title">
-      <h1>thank you for the purchase</h1>
+      <h1>Your purchase is confirmed</h1>
     </div>
     <div class="c_items_list">
       <ul class="c_item_cont list_header">

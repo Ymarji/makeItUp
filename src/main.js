@@ -28,7 +28,8 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 router.beforeEach((to, from, next) => {
-  console.log("loggeed", store.state.user.isLogged);
+  console.log("loggeed", from);
+  if (to.name === "checkout" && store.state.cart.cart?.length === 0) next("/");
   if (!store.state.user.isLogged && to.meta.requiresAuth) {
     next("/login");
   } else {

@@ -52,6 +52,7 @@
           v-model="ssc"
         />
       </div>
+      <div></div>
       <button class="confirm" type="submit" :disabled="cart.length === 0">
         Confirme
       </button>
